@@ -1,0 +1,13 @@
+
+flask # python 3.10
+sentence_transformers # before this install rust  and check it in cmd by Type rustc --version and cargo --version to ensure both are installed properly.
+chroma-hnswlib==0.7.3
+chromadb
+boto3
+pdfminer
+pdfminer.six
+langchain
+langchain_community
+flask_mysqldb
+Pymupdf
+pytesseract
