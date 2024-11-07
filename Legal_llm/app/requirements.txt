@@ -8,6 +8,7 @@ pdfminer
 pdfminer.six
 langchain
 langchain_community
-flask_mysqldb
+#flask_mysqldb
+mysql-connector-python
 Pymupdf
 pytesseract

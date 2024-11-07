@@ -1,0 +1,69 @@
+# version: "2"   # Specifies the version of Docker Compose syntax to use.
+
+# services:  # Defines the services (containers) that are part of the application.
+#   app:  # The name of the first service (container).
+#     build: ./app  # Specifies the location of the Dockerfile for building the 'app' service.
+#     links:  # Defines dependencies between services. Here, the 'app' service depends on the 'db' service.
+#       - db
+#     ports:
+#       - "5000:5000"  # Maps port 5000 on the host to port 5000 on the 'app' container.
+
+#   db:  # The name of the second service (container).
+#     image: mysql:5.7  # Specifies the Docker image to use for the 'db' service.
+#     ports:
+#       - "32000:3306"  # Maps port 32000 on the host to port 3306 on the 'db' container.
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root  # Sets the environment variable 'MYSQL_ROOT_PASSWORD' for the 'db' container.
+#     volumes:
+#       - ./db:/docker-entrypoint-initdb.d/:ro  # Mounts a volume for initializing the database with read-only access.
+
+
+
+
+# version: "2"
+
+# services:
+#   app:
+#     build: ./app
+#     links:
+#       - db
+#     ports:
+#       - "5000:5000"
+#     volumes:
+#       - C:/Users/rmnjs/.aws:/root/.aws  # Mounts the .aws credentials folder to the container
+#     environment:
+#       - AWS_PROFILE=default  # Optional, if using the default profile
+
+#   db:
+#     image: mysql:5.7
+#     ports:
+#       - "3308:3306"
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#     volumes:
+#       - ./db:/docker-entrypoint-initdb.d/:ro
+
+
+version: "2"
+
+services:
+  app:
+    build: ./app
+    image: genaiihub24/my-docker:legal_llm-app  # Docker Hub tag for app
+    links:
+      - db
+    ports:
+      - "5000:5000"
+    volumes:
+      - C:/Users/rmnjs/.aws:/root/.aws  # Mounts the .aws credentials folder to the container
+    environment:
+      - AWS_PROFILE=default  # Optional, if using the default profile
+
+  db:
+    image: mysql:5.7 # Docker Hub tag for db
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
